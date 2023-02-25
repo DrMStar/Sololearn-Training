@@ -1,0 +1,71 @@
+"""
+You and your friends like to share YouTube links all throughout the day. You want to keep track of all the videos you watch in your own personal notepad, but you find that keeping the entire link is unnecessary. 
+Keep the video ID (the combination of letters and numbers at the end of the link) in your notepad to slim down the URL.
+
+Task: 
+Create a program that parses through a link, extracts and outputs the YouTube video ID.
+
+Input Format: 
+A string containing the URL to a YouTube video. The format of the string can be in "https://www.youtube.com/watch?v=kbxkq_w51PM" or the shortened "https://youtu.be/KMBBjzp5hdc" format.
+
+Output Format: 
+A string containing the extracted YouTube video id.
+
+Sample Input: 
+https://www.youtube.com/watch?v=RRW2aUSw5vU
+
+Sample Output: 
+RRW2aUSw5vU
+"""
+
+adresa = input()
+#adresa = "https://youtu.be/KMBBjzp5hdc"
+#adresa = "https://www.youtube.com/watch?v=RRW2aUSw5vU"
+
+
+#-------------------------------------
+#short address
+if "youtu.be" in adresa:
+
+#looking for last occurrence of "/"
+    start = 0
+    go = 1
+    while go == 1:
+        a = adresa.find("/", start)
+        if a >= 0:
+            start = a + 1 #index of the first letter of the link
+        else:
+            go = 0
+#saving of text after the last occurrenceof "/"
+    a = 0
+    vystup = ""
+    for i in adresa: 
+        if a >= start:
+            vystup = vystup + i
+        a += 1
+    print(vystup)
+    
+#-------------------------------- 
+#full address
+if "youtube.com" in adresa:
+
+#looking for an occurrenceof "="
+    a = adresa.find("=")
+    start = a + 1 #index of the first letterof the link
+    
+#saving a text after "="
+    a = 0
+    vystup = ""
+    for i in adresa: 
+        if a >= start:
+            vystup = vystup + i
+        a += 1
+    print(vystup)
+
+
+
+
+
+
+
+
